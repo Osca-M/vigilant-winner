@@ -5,8 +5,8 @@ name = "pypi"
 
 [packages]
 django = "*"
-mongoengine = "*"
-django-rest-framework-mongoengine = "*"
+pymongo = {extras = ["gssapi", "snappy", "srv", "tls"], version = "*"}
+dnspython = "*"
 
 [dev-packages]
 
