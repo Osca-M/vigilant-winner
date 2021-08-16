@@ -1,13 +1,13 @@
-from django.shortcuts import render
-# from pymongo import MongoClient
-# # Create your views here.
-# USERNAME = 'vigilante'
-# PASSWORD = 'sirikuu'
-# DATABASE_HOST = 'localhost'
-# DATABASE_NAME = 'vigilant-winner'
-# connection_string = f'mongodb+srv://{USERNAME}:{PASSWORD}@{DATABASE_HOST}/{DATABASE_NAME}?retryWrites=true&w=majority'
-# client = MongoClient(connection_string)
-# db = client['db_name']
-# print(db, 'db')
+from django.views import generic
+from .models import Post
 
 
+# Create your views here.
+class PostList(generic.ListView):
+    queryset = Post.objects.filter(status=1).order_by('-created_on')
+    template_name = 'index.html'
+
+
+class PostDetail(generic.DetailView):
+    model = Post
+    template_name = 'post_detail.html'
